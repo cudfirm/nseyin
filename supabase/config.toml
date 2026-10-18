@@ -1,0 +1,6 @@
+# Only the function settings are needed here; `supabase init` generates the rest locally.
+[functions.submit-booking]
+verify_jwt = false   # public guest form; protected by validation, rate limits, honeypot and CORS instead
+
+[functions.submit-contact]
+verify_jwt = false
