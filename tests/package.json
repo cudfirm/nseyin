@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:db": "node db-rls.test.mjs",
+    "test:validate": "node --experimental-strip-types validate.test.ts",
+    "test:functions": "deno run --allow-env --allow-read --import-map=import_map.json --no-lock functions.test.ts",
+    "test": "npm run test:db && npm run test:validate && npm run test:functions"
+  },
+  "devDependencies": { "@electric-sql/pglite": "*" }
+}
