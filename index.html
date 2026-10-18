@@ -1,637 +1,266 @@
 <!DOCTYPE html>
-
-<html lang="en" class="scroll-smooth">
-
+<html lang="en-NG">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NSEYIN – Massage Therapy</title>
-    <link rel="icon" href="https://www.codewithfaraz.com/tools/placeholder?size=32x32&bgColor=FDFDFB&textColor=1A1A1A&text=EE" type="image/png">
-
-
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<!-- AOS (Animate on Scroll) -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-<!-- Swiper.js -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<!-- Lucide Icons -->
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-
-<!-- Custom Styles -->
-<link rel="stylesheet" href="css/styles.css">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NSEYIN | Professional Massage Therapy — Deep Tissue, Swedish, Sports & Shiatsu</title>
+<meta name="description" content="NSEYIN offers professional Deep Tissue, Swedish and Sports massage, plus Shiatsu. Comfort, clear consent and respect for boundaries. Request a booking online, no account needed.">
+<link rel="canonical" href="https://nseyin.netlify.app/">
+<meta name="theme-color" content="#0B3D2E">
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NSEYIN">
+<meta property="og:title" content="NSEYIN | Professional Massage Therapy — Deep Tissue, Swedish, Sports & Shiatsu">
+<meta property="og:description" content="NSEYIN offers professional Deep Tissue, Swedish and Sports massage, plus Shiatsu. Comfort, clear consent and respect for boundaries. Request a booking online, no account needed.">
+<meta property="og:url" content="https://nseyin.netlify.app/">
+<meta property="og:image" content="https://nseyin.netlify.app/img/og-image.jpg">
+<meta property="og:locale" content="en_NG">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/dm-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/app.css">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "NSEYIN", "url": "https://nseyin.netlify.app/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "NSEYIN", "url": "https://nseyin.netlify.app/", "logo": "https://nseyin.netlify.app/img/icon-512.png", "slogan": "Mindfulness & Service", "email": "utibedc@gmail.com", "telephone": "+2349056317709", "address": {"@type": "PostalAddress", "addressLocality": "Lagos", "addressCountry": "NG"}, "areaServed": "Lagos, Nigeria"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Deep Tissue Massage", "serviceType": "Deep Tissue Massage", "description": "Focused, sustained massage techniques working with deeper layers of muscle and connective tissue, with pressure adjusted to the client.", "provider": {"@type": "Organization", "name": "NSEYIN", "url": "https://nseyin.netlify.app/"}, "url": "https://nseyin.netlify.app/#svc-deep-tissue"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Swedish Massage", "serviceType": "Swedish Massage", "description": "Long, flowing strokes at light-to-medium pressure intended to encourage relaxation and ease everyday muscular tension.", "provider": {"@type": "Organization", "name": "NSEYIN", "url": "https://nseyin.netlify.app/"}, "url": "https://nseyin.netlify.app/#svc-swedish"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Sports Massage", "serviceType": "Sports Massage", "description": "Massage for active people who want to maintain mobility and manage muscular tension, adapted to the person's goals and suitability.", "provider": {"@type": "Organization", "name": "NSEYIN", "url": "https://nseyin.netlify.app/"}, "url": "https://nseyin.netlify.app/#svc-sports"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Shiatsu Massage", "serviceType": "Shiatsu Massage", "description": "A traditional Japanese bodywork using rhythmic pressure with the fingers, palms and other parts of the hands, intended to encourage relaxation.", "provider": {"@type": "Organization", "name": "NSEYIN", "url": "https://nseyin.netlify.app/"}, "url": "https://nseyin.netlify.app/#svc-shiatsu"}</script>
 </head>
-
-
-<body id="top" class="antialiased">
-
-<!-- Scroll Progress Indicator -->
-<div id="scroll-indicator" style="width: 0%;"></div>
-
-<!-- ===== Header & Navbar ===== -->
-<header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
-    <div class="container mx-auto px-6 py-5 flex justify-between items-center">
-        <!-- Logo -->
- <a href="index.html" class="font-display text-3xl font-bold text-ivory tracking-wide" id="logo"> NSE<span>Y</span>IN</a>
-
-        <!-- Desktop Nav -->
-        <nav class="hidden lg:flex space-x-8 items-center">
- <a href="index.html" class="text-ivory/80 hover:text-soft-gold transition-colors duration-300 nav-link-desktop">Home</a>
- <a href="#services" class="text-ivory/80 hover:text-soft-gold transition-colors duration-300 nav-link-desktop">Services</a>
- <a href="#therapists" class="text-ivory/80 hover:text-soft-gold transition-colors duration-300 nav-link-desktop">Therapists</a>
- <a href="#about" class="text-ivory/80 hover:text-soft-gold transition-colors duration-300 nav-link-desktop">About</a>
- <a href="#testimonials" class="text-ivory/80 hover:text-soft-gold transition-colors duration-300 nav-link-desktop">Reviews</a>
-<a href="#booking" class="bg-ivory text-charcoal px-6 py-3 rounded-md text-sm font-semibold hover:bg-soft-gold hover:text-charcoal shadow-lg transition-all duration-300 transform hover:-translate-y-0.5" id="nav-cta-desktop">Book Now</a>
-
- </nav>
-
-
-        <!-- Hamburger Menu Button Placeholder -->
-        <div class="lg:hidden w-[28px] h-[36px]"></div>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+  <div class="rail">
+    <div class="brand-card">
+      <img class="mark" src="img/logo-mark.png" alt="" width="84" height="79">
+      <a class="name" href="index.html" style="text-decoration:none" aria-label="NSEYIN — home">NSEYIN</a>
+      <p class="tag">Mindfulness &amp; Service</p>
+      <a class="btn btn-gold" href="#book">Book a Session</a>
     </div>
-</header>
+    <nav class="chipnav" aria-label="Sections">
+      <a href="#services">Services</a><a href="#approach">How we work</a><a href="#book">Book</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
 
-<!-- ===== Hamburger Menu Button ===== -->
-<button id="hamburger-btn" class="lg:hidden z-[60] hamburger fixed top-5 right-6">
-    <span class="bg-ivory"></span>
-    <span class="bg-ivory"></span>
-    <span class="bg-ivory"></span>
-</button>
-
-<!-- ===== Full-screen Nav Overlay ===== -->
-<div id="nav-overlay" class="nav-overlay fixed inset-0 bg-charcoal z-[55] flex flex-col items-center justify-center space-y-10">
-    <a href="index.html" class="text-ivory text-4xl font-display">Home</a>
-    <a href="#services" class="text-ivory text-4xl font-display">Services</a>
-    <a href="#therapists" class="text-ivory text-4xl font-display">Therapists</a>
-    <a href="#about" class="text-ivory text-4xl font-display">About</a>
-    <a href="#testimonials" class="text-ivory text-4xl font-display">Reviews</a>
-    <a href="#booking" class="text-ivory text-4xl font-display">Book Now</a>
-</div>
-
-<main>
-
-    <!-- ===== Hero Section ===== -->
-    <section class="min-h-screen lg:min-h-[90vh] flex items-end relative overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="img/body.png" alt="Nseyin Massage Therapy" class="w-full h-full object-cover object-center" onerror="this.style.display='none'">
-            <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/60 to-transparent"></div>
-        </div>
-
-        <!-- Hero Content -->
-        <div class="container mx-auto px-6 pb-20 md:pb-32 lg:pb-40 relative z-10 text-left">
-            <div data-aos="fade-up">
-                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-ivory leading-tight mb-6">
-                    NSEYIN
-                </h1>
-                <p class="text-lg md:text-xl text-ivory/80 max-w-2xl mb-10">Restore balance, release tension, and renew your energy with expert-led massage therapies — designed for deep healing of body, mind, and soul.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#booking" class="bg-soft-gold text-charcoal px-8 py-4 rounded-md text-lg font-semibold hover:bg-dark-gold shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 text-center">
-                        ✦ Book a Session
-                    </a>
-                    <a href="#services" class="bg-transparent text-ivory border border-ivory/50 px-8 py-4 rounded-md text-lg font-semibold hover:bg-ivory hover:text-charcoal transition-all duration-300 text-center">
-                        Explore Services →
-                    </a>
-                </div>
-            </div>
-        </div>
+  <main id="main" class="stack">
+    <section class="card intro" aria-labelledby="h-intro" id="top">
+      <div>
+        <span class="eyebrow">Professional massage therapy</span>
+        <h1 id="h-intro">Massage, shaped around <span>you</span>.</h1>
+        <p class="lead">Deep Tissue, Swedish and Sports massage, with Shiatsu as an additional service. Unhurried sessions where your comfort, your goals and your consent come first.</p>
+        <div class="btn-row"><a class="btn btn-ink" href="#book">Book a Session</a><a class="btn btn-outline" href="#services">Explore Our Services</a></div>
+        <ul class="facts"><li>Pressure adjusted to you</li><li>Consent at every step</li><li>No account needed</li></ul>
+      </div>
+      <div class="arch"><img src="img/oil-640.webp" srcset="img/oil-400.webp 400w, img/oil-640.webp 640w, img/oil-1024.webp 1024w" sizes="(min-width:700px) 280px, 70vw" width="1024" height="1024" alt="Warm massage oil being poured into an open hand, with softly lit candles in the background" class="" fetchpriority="high"></div>
     </section>
 
-
-    <!-- ===== Featured Properties Section ===== -->
-    <section class="py-20 bg-ivory">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-soft-gold font-semibold tracking-widest uppercase">✦ What We Offer</span>
-                <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mt-4">
-                    Our Therapies
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- Property Card 1 -->
-                <div class="rounded-lg overflow-hidden shadow-xl transform transition-all duration-500 hover:scale-[1.02] group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative h-96">
-                        <img src="img/swedish-massage.png" alt="Swedish Massage" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-  <div class="absolute bottom-4 left-4 right-4 p-5 bg-black/30 backdrop-blur-lg rounded-lg border border-white/20">
-                            <h3 class="font-display text-2xl font-bold text-white mb-1">Swedish Relaxation</h3>
-                            <div class="flex items-center text-soft-gold text-sm"><i data-lucide="map-pin" class="w-4 h-4 mr-2"></i><span>60 / 90 mins</span></div>
-                        </div>
-                        <span class="absolute top-4 left-4 bg-soft-gold text-charcoal text-xs font-bold uppercase px-3 py-1 rounded-full">Available</span>
-                    </div>
-                    <div class="bg-white p-6">
-                        <div class="mb-4">
-                            <span class="font-display text-3xl font-bold text-charcoal">Classic full-body massage</span>
-                        </div>
-                        <div class="flex justify-start space-x-6 text-charcoal/70 mb-5">
-                            <span class="flex items-center"><i data-lucide="bed"
-                                    class="w-5 h-5 mr-2 text-soft-gold"></i> Flowing strokes</span>
-                            <span class="flex items-center"><i data-lucide="bath"
-                                    class="w-5 h-5 mr-2 text-soft-gold"></i> Ease tension</span>
-                            <span class="flex items-center"><i data-lucide="ruler"
-                                    class="w-5 h-5 mr-2 text-soft-gold"></i> Better sleep</span>
-                        </div>
-                        <a href="#booking"
-                            class="block w-full text-center bg-charcoal text-ivory px-6 py-3 rounded-md font-semibold hover:bg-soft-gold hover:text-charcoal transition-all duration-300">Book Session</a>
-                    </div>
-                </div>
-
-                <!-- Property Card 2 -->
-                <div class="rounded-lg overflow-hidden shadow-xl transform transition-all duration-500 hover:scale-[1.02] group"
-                    data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative h-96">
-                        <img src="img/sport-massage.jpeg" alt="Sports Session" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div
-                            class="absolute bottom-4 left-4 right-4 p-5 bg-black/30 backdrop-blur-lg rounded-lg border border-white/20">
-                            <h3 class="font-display text-2xl font-bold text-white mb-1">Sports | Thai</h3>
-                            <div class="flex items-center text-soft-gold text-sm"><i data-lucide="map-pin"
-                                    class="w-4 h-4 mr-2"></i><span>60 / 90 mins</span></div>
-                        </div>
-                        <span
-                            class="absolute top-4 left-4 bg-soft-gold text-charcoal text-xs font-bold uppercase px-3 py-1 rounded-full">Available</span>
-                    </div>
-                    <div class="bg-white p-6">
-                        <div class="mb-4">
-                            <span class="font-display text-3xl font-bold text-charcoal">Firm muscle techniques</span>
-                        </div>
-                        <div class="flex justify-start space-x-6 text-charcoal/70 mb-5">
-                            <span class="flex items-center"><i data-lucide="bed"
-                                    class="w-5 h-5 mr-2 text-soft-gold"></i> Chronic pain relief</span>
-                            <span class="flex items-center"><i data-lucide="bath"
-                                    class="w-5 h-5 mr-2 text-soft-gold"></i> Deep layers</span>
-                            <span class="flex items-center"><i data-lucide="ruler"
-                                    class="w-5 h-5 mr-2 text-soft-gold"></i> Posture correction</span>
-                        </div>
-                        <a href="#booking"
-                            class="block w-full text-center bg-charcoal text-ivory px-6 py-3 rounded-md font-semibold hover:bg-soft-gold hover:text-charcoal transition-all duration-300">Book Session</a>
-                    </div>
-                </div>
-
-                <!-- Property Card 3 -->
-                <div class="rounded-lg overflow-hidden shadow-xl transform transition-all duration-500 hover:scale-[1.02] group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative h-96">
-                        <img src="img/deep-tissue.png" alt="Deep Tissue" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute bottom-4 left-4 right-4 p-5 bg-black/30 backdrop-blur-lg rounded-lg border border-white/20">
-                            <h3 class="font-display text-2xl font-bold text-white mb-1">Deep Tissue</h3>
-                            <div class="flex items-center text-soft-gold text-sm"><i data-lucide="map-pin" class="w-4 h-4 mr-2"></i><span>75 / 90 mins</span></div>
-                        </div>
-                        <span
-                            class="absolute top-4 left-4 bg-charcoal text-ivory text-xs font-bold uppercase px-3 py-1 rounded-full">Popular</span>
-                    </div>
-                    <div class="bg-white p-6">
-                        <div class="mb-4">
-                            <span class="font-display text-3xl font-bold text-charcoal">Heated basalt stones</span>
-                        </div>
-                        <div class="flex justify-start space-x-6 text-charcoal/70 mb-5">
-                            <span class="flex items-center"><i data-lucide="bed"
-                                    class="w-5 h-5 mr-2 text-soft-gold"></i> Deep warmth</span>
-                            <span class="flex items-center"><i data-lucide="bath"
-                                    class="w-5 h-5 mr-2 text-soft-gold"></i> Melt tension</span>
-                            <span class="flex items-center"><i data-lucide="ruler"
-                                    class="w-5 h-5 mr-2 text-soft-gold"></i> Full body</span>
-                        </div>
-                        <a href="#booking"
-                            class="block w-full text-center bg-charcoal text-ivory px-6 py-3 rounded-md font-semibold hover:bg-soft-gold hover:text-charcoal transition-all duration-300">Book Session</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-16" data-aos="fade-up">
-                <a href="#services"
-                    class="bg-charcoal text-ivory px-10 py-4 rounded-md text-lg font-semibold hover:bg-soft-gold hover:text-charcoal shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
-                    View All Therapies
-                </a>
-            </div>
-        </div>
+    <section class="card" id="services" aria-labelledby="h-services">
+      <div class="card-header"><h2 id="h-services">Our massage</h2><span class="idx">01 · SERVICES</span></div>
+      <p class="lead" style="margin-bottom:1.2rem">Three core services and one additional. Filter by what you are after, or open a card for details.</p>
+      <div class="chips" role="group" aria-label="Filter services by goal" data-filter-for="tiles">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All four</button>
+        <button class="chip" type="button" data-filter="relax" aria-pressed="false">Relax</button>
+        <button class="chip" type="button" data-filter="mobility" aria-pressed="false">Mobility &amp; recovery</button>
+      </div>
+      <div class="tiles" id="tiles">
+      <article class="tile reveal" id="svc-deep-tissue" data-tags="mobility">
+        <div class="arch"><img src="img/deep-800.webp" srcset="img/deep-480.webp 480w, img/deep-800.webp 800w, img/deep-1408.webp 1408w" sizes="(min-width:1024px) 380px, (min-width:620px) 45vw, 90vw" width="1408" height="768" alt="Illustration of a therapist leaning in to work on a client's back during a Deep Tissue session, the client resting face-down under a blue towel in a warm room with plants and patterned artwork" class="" loading="lazy" decoding="async"></div><span class="num" aria-hidden="true">01</span>
+        <span class="tag">Firm, focused</span>
+        <h3>Deep Tissue Massage</h3><p>Focused, sustained work on deeper layers of muscle and connective tissue, to ease tension and support mobility. Pressure is firm and always adjusted to you.</p>
+        <div class="btn-row"><a class="btn btn-ink" href="#book" data-book="deep-tissue">Book This Service</a><button class="btn btn-outline" type="button" data-open="deep-tissue" aria-haspopup="dialog">Details<span class="sr-only"> about Deep Tissue</span></button></div>
+      </article>
+      <article class="tile reveal" id="svc-swedish" data-tags="relax">
+        <div class="arch"><img src="img/swedish-800.webp" srcset="img/swedish-480.webp 480w, img/swedish-800.webp 800w, img/swedish-1408.webp 1408w" sizes="(min-width:1024px) 380px, (min-width:620px) 45vw, 90vw" width="1408" height="768" alt="Illustration of a therapist using long, flowing strokes on a client's back during a Swedish massage, in a calm green room with candles and a window onto leaves" class="" loading="lazy" decoding="async"></div><span class="num" aria-hidden="true">02</span>
+        <span class="tag">Calm, flowing</span>
+        <h3>Swedish Massage</h3><p>Long, flowing strokes at light-to-medium pressure over larger areas of the body, to encourage relaxation and ease everyday tension.</p>
+        <div class="btn-row"><a class="btn btn-ink" href="#book" data-book="swedish">Book This Service</a><button class="btn btn-outline" type="button" data-open="swedish" aria-haspopup="dialog">Details<span class="sr-only"> about Swedish</span></button></div>
+      </article>
+      <article class="tile reveal" id="svc-sports" data-tags="mobility">
+        <div class="arch"><img src="img/sports-800.webp" srcset="img/sports-480.webp 480w, img/sports-800.webp 800w, img/sports-1408.webp 1408w" sizes="(min-width:1024px) 380px, (min-width:620px) 45vw, 90vw" width="1408" height="768" alt="Illustration of a therapist working on a client's leg during a Sports massage, the client lying face-down on a massage table in a bright room with an anatomy poster" class="" loading="lazy" decoding="async"></div><span class="num" aria-hidden="true">03</span>
+        <span class="tag">Active lifestyles</span>
+        <h3>Sports Massage</h3><p>Not only for athletes. For anyone who wants to maintain mobility, manage muscular tension and support recovery as part of an active life.</p>
+        <div class="btn-row"><a class="btn btn-ink" href="#book" data-book="sports">Book This Service</a><button class="btn btn-outline" type="button" data-open="sports" aria-haspopup="dialog">Details<span class="sr-only"> about Sports</span></button></div>
+      </article>
+      <article class="tile reveal" id="svc-shiatsu" data-tags="relax">
+        <div class="arch"><img src="img/shiatsu-800.webp" srcset="img/shiatsu-480.webp 480w, img/shiatsu-800.webp 800w, img/shiatsu-1408.webp 1408w" sizes="(min-width:1024px) 380px, (min-width:620px) 45vw, 90vw" width="1408" height="768" alt="Illustration of a therapist kneeling to apply Shiatsu pressure to a clothed client's back, the client lying on a floor mat in a room with plants and African artwork" class="" loading="lazy" decoding="async"></div><span class="num" aria-hidden="true">04</span>
+        <span class="tag tag--gold">Additional service</span>
+        <h3>Shiatsu Massage</h3><p>A traditional Japanese bodywork using rhythmic pressure from the fingers, palms and other parts of the hands, to encourage relaxation and a sense of balance.</p>
+        <div class="btn-row"><a class="btn btn-ink" href="#book" data-book="shiatsu">Book This Service</a><button class="btn btn-outline" type="button" data-open="shiatsu" aria-haspopup="dialog">Details<span class="sr-only"> about Shiatsu</span></button></div>
+      </article>
+      </div>
+      <p class="hint" style="margin-top:1rem">Massage supports relaxation, comfort and mobility. It is not a medical treatment, and we do not make medical promises.</p>
     </section>
 
-
-    <!-- ===== Our Services Section ===== -->
-    <section class="py-20 bg-light-gray">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Text Content -->
-                <div data-aos="fade-right">
-                    <span class="text-soft-gold font-semibold tracking-widest uppercase">Our Focus</span>
-                    <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mt-4 mb-8">
-                        What Drives Us
-                    </h2>
-                    <p class="text-lg text-charcoal/70 mb-8">
-                        Our clients receive more than just a massage — they receive a full-care experience tailored to their body's unique needs. From personalised treatment plans to expert therapist pairing and seamless booking, we manage every detail with care.
-                    </p>
-                    <div class="space-y-6 mb-10">
-                        <div class="flex items-start">
-                            <div
-                                class="flex-shrink-0 w-12 h-12 bg-soft-gold/10 text-soft-gold rounded-full flex items-center justify-center">
-                                <i data-lucide="key" class="w-6 h-6"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-xl font-semibold text-charcoal">Tailored to You</h3>
-                                <p class="text-charcoal/70 mt-1">Every session is personalised to your body's unique needs — bringing relief, restoration, and deep renewal.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div
-                                class="flex-shrink-0 w-12 h-12 bg-soft-gold/10 text-soft-gold rounded-full flex items-center justify-center">
-                                <i data-lucide="globe" class="w-6 h-6"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-xl font-semibold text-charcoal">Safe & Trusted</h3>
-                                <p class="text-charcoal/70 mt-1">Certified, compassionate therapists dedicated to your healing journey in a safe, professional environment.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#booking"
-                        class="bg-charcoal text-ivory px-8 py-4 rounded-md text-lg font-semibold hover:bg-soft-gold hover:text-charcoal shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
-                        Book a Session
-                    </a>
-                </div>
-                <!-- Image Content -->
-                <div class="relative h-[500px] lg:h-[600px]" data-aos="fade-left">
-                    <!-- Image 1 -->
-                    <img src="https://raw.githubusercontent.com/farazc60/Project-Images/refs/heads/main/Elysian%20Real%20Estate%20Template/5.png" alt="Luxury interior living room"
-                        class="w-3/4 h-3/4 object-cover rounded-lg shadow-2xl">
-                    <!-- Image 2 -->
-                    <img src="https://raw.githubusercontent.com/farazc60/Project-Images/refs/heads/main/Elysian%20Real%20Estate%20Template/9.png" alt="Elegant architectural detail"
-                        class="absolute bottom-0 right-0 w-1/2 h-1/2 object-cover rounded-lg shadow-2xl border-8 border-light-gray"
-                        data-aos="zoom-in" data-aos-delay="300">
-                </div>
-            </div>
-        </div>
+    <section class="card card--dark" id="approach" aria-labelledby="h-approach">
+      <div class="card-header"><h2 id="h-approach">How we work</h2><span class="idx">02 · CONSENT</span></div>
+      <p class="lead" style="margin-bottom:1.2rem">Respect, privacy and clear consent are part of every session, not a footnote. These principles apply to every client.</p>
+      <ul class="principles"><li>You are treated with dignity and respect at all times.</li><li>Your personal and professional boundaries are respected.</li><li>You will know the intended treatment areas before the session begins.</li><li>Consent is informed, voluntary and specific to the treatment.</li><li>You can ask questions, decline a technique, change the pressure, or ask us to pause or stop, at any time.</li><li>Permission for one area or technique never implies permission for another. A new area needs a separate conversation and your consent first.</li><li>Your privacy, comfort and draping are respected throughout.</li><li>You can withdraw consent at any point, with no pressure and no need to explain.</li></ul>
+      <p class="note"><strong>Important:</strong> agreeing to this policy when you request a booking does not give blanket permission for physical contact. Consent is a conversation at the start of the session and an ongoing choice throughout it.</p>
+      <p class="note" style="margin-top:.8rem"><strong>What we offer:</strong> professional therapeutic massage only. Nothing we offer is sexual in nature, and inappropriate requests or behaviour will end the session.</p>
+      <p class="hint" style="margin-top:1rem">Practitioner: <strong>Nseyin</strong> — Advanced Practitioner in Integrative Swedish, Deep Tissue, Sports &amp; Shiatsu Modalities</p>
     </section>
 
-    <!-- ===== Statistics Section ===== -->
-    <section class="py-20 bg-charcoal text-ivory">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <span id="stat-1" class="font-display text-6xl font-bold text-soft-gold"
-                        data-target="12">0</span>
-                    <span class="font-display text-6xl font-bold text-soft-gold">00+</span>
-                    <h3 class="text-xl font-semibold text-ivory/80 mt-4">Sessions Done</h3>
-                    <p class="text-ivory/60">Expert-led therapies delivered with care and precision.</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <span id="stat-2" class="font-display text-6xl font-bold text-soft-gold"
-                        data-target="3">0</span>
-                    <h3 class="text-xl font-semibold text-ivory/80 mt-4">Expert Therapists</h3>
-                    <p class="text-ivory/60">Certified, compassionate, and deeply skilled healers.</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="300">
-                    <span id="stat-3" class="font-display text-6xl font-bold text-soft-gold"
-                        data-target="98">0</span>
-                    <span class="font-display text-6xl font-bold text-soft-gold">%</span>
-                    <h3 class="text-xl font-semibold text-ivory/80 mt-4">Client Satisfaction</h3>
-                    <p class="text-ivory/60">Building lasting wellness relationships based on trust.</p>
-                </div>
+    <section class="card card--dark" id="book" aria-labelledby="h-book">
+      <div class="card-header"><h2 id="h-book">Book a session</h2><span class="idx">03 · REQUEST</span></div>
+      <div class="book-grid">
+        <div><ol class="progress" id="progress" aria-label="Booking progress"><li class="current">1. Service</li><li>2. Your details</li><li>3. Review &amp; send</li></ol>
+        <div id="form-status" class="alert" role="alert" tabindex="-1" hidden></div>
+        <form id="booking-form" class="form-card" novalidate autocomplete="on">
+          <section class="step active" aria-labelledby="s1">
+            <h3 id="s1" data-step-title>Choose a service</h3>
+            <div class="field"><fieldset style="border:0;padding:0;margin:0"><legend class="sr-only">Service <span class="req" aria-hidden="true">*</span></legend>
+              <div class="choice-group">
+                <label class="choice"><input type="radio" name="service" value="deep-tissue" required><span>Deep Tissue Massage<small>Firm, focused work</small></span></label>
+                <label class="choice"><input type="radio" name="service" value="swedish" required><span>Swedish Massage<small>Calm, flowing strokes</small></span></label>
+                <label class="choice"><input type="radio" name="service" value="sports" required><span>Sports Massage<small>For active lifestyles</small></span></label>
+                <label class="choice"><input type="radio" name="service" value="shiatsu" required><span>Shiatsu Massage<small>Additional service</small></span></label>
+                <label class="choice"><input type="radio" name="service" value="unsure" required><span>Not sure yet<small>Advise me when you reply</small></span></label>
+              </div></fieldset><p class="error-msg" id="err-service" role="alert"></p></div>
+            <div class="form-nav"><span></span><button type="button" class="btn btn-ink" data-next>Continue</button></div>
+          </section>
+          <section class="step" aria-labelledby="s2">
+            <h3 id="s2" data-step-title>Your details</h3>
+            <div class="row row-2">
+              <div class="field"><label for="f-name">Full name <span class="req" aria-hidden="true">*</span></label><input id="f-name" name="name" type="text" autocomplete="name" required maxlength="100"><p class="error-msg" id="err-name"></p></div>
+              <div class="field"><label for="f-email">Email <span class="req" aria-hidden="true">*</span></label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="160"><p class="error-msg" id="err-email"></p></div>
             </div>
-        </div>
-    </section>
-
-    <!-- ===== Meet Our Agents Section ===== -->
-    <section class="py-20 bg-ivory">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-soft-gold font-semibold tracking-widest uppercase">✦ Our Team</span>
-                <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mt-4">
-                    Meet the Therapists
-                </h2>
+            <div class="row row-2">
+              <div class="field"><label for="f-phone">Phone / WhatsApp <span class="req" aria-hidden="true">*</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="30" placeholder="+234 …"><p class="error-msg" id="err-phone"></p></div>
+              <div class="field"><fieldset style="border:0;padding:0;margin:0"><legend>Best way to reach you <span class="req" aria-hidden="true">*</span></legend>
+                <div class="choice-group" style="grid-template-columns:1fr"><label class="choice"><input type="radio" name="contactMethod" value="email"><span>Email</span></label><label class="choice"><input type="radio" name="contactMethod" value="phone"><span>Phone call</span></label><label class="choice"><input type="radio" name="contactMethod" value="whatsapp"><span>WhatsApp</span></label></div></fieldset><p class="error-msg" id="err-contactMethod"></p></div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-                <!-- Agent 1 -->
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative inline-block mb-6">
-                        <img src="https://raw.githubusercontent.com/farazc60/Project-Images/refs/heads/main/Elysian%20Real%20Estate%20Template/Kenji Tanaka.png" alt="Portrait of Alexander Cole"
-                            class="w-64 h-64 object-cover rounded-full object-top">
-                        <div
-                            class="absolute inset-0 rounded-full border-2 border-soft-gold/50 scale-105 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:border-soft-gold">
-                        </div>
-                    </div>
-                    <h3 class="font-display text-2xl font-bold text-charcoal">Profile</h3>
-                    <p class="text-soft-gold font-medium mb-3">Wellness Specialist</p>
-                    <p class="text-charcoal/70 max-w-xs mx-auto mb-4">Certified in holistic wellness with 8+ years helping clients restore balance through therapeutic touch.</p>
-                    <a href="mailto:hello@nseyin.com"
-                        class="font-semibold text-charcoal hover:text-soft-gold transition-colors">hello@nseyin.com</a>
-                </div>
-                <!-- Agent 2 -->
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative inline-block mb-6">
-                        <img src="https://raw.githubusercontent.com/farazc60/Project-Images/refs/heads/main/Elysian%20Real%20Estate%20Template/Isabella Rossi.png" alt="Portrait of Isabella Chen"
-                            class="w-64 h-64 object-cover rounded-full object-top">
-                        <div
-                            class="absolute inset-0 rounded-full border-2 border-soft-gold/50 scale-105 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:border-soft-gold">
-                        </div>
-                    </div>
-                    <h3 class="font-display text-2xl font-bold text-charcoal">Dana</h3>
-                    <p class="text-soft-gold font-medium mb-3">Relaxation Expert</p>
-                    <p class="text-charcoal/70 max-w-xs mx-auto mb-4">Specialised in aromatherapy and Swedish techniques for stress reduction and mental clarity.</p>
-                    <a href="mailto:hello@nseyin.com"
-                        class="font-semibold text-charcoal hover:text-soft-gold transition-colors">hello@nseyin.com</a>
-                </div>
-                <!-- Agent 3 -->
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative inline-block mb-6">
-                        <img src="https://raw.githubusercontent.com/farazc60/Project-Images/refs/heads/main/Elysian%20Real%20Estate%20Template/Marcus Cole.png" alt="Portrait of Marcus Thorne"
-                            class="w-64 h-64 object-cover rounded-full object-top">
-                        <div
-                            class="absolute inset-0 rounded-full border-2 border-soft-gold/50 scale-105 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:border-soft-gold">
-                        </div>
-                    </div>
-                    <h3 class="font-display text-2xl font-bold text-charcoal">Navia</h3>
-                    <p class="text-soft-gold font-medium mb-3">Relaxation Therapist</p>
-                    <p class="text-charcoal/70 max-w-xs mx-auto mb-4">Expert in deep tissue and cupping, helping athletes and desk workers recover and perform.</p>
-                    <a href="mailto:hello@nseyin.com"
-                        class="font-semibold text-charcoal hover:text-soft-gold transition-colors">hello@nseyin.com</a>
-                </div>
+            <div class="row row-2">
+              <div class="field"><label for="f-date">Preferred date <span class="req" aria-hidden="true">*</span></label><input id="f-date" name="date" type="date" required><p class="error-msg" id="err-date"></p></div>
+              <div class="field"><label for="f-time">Preferred time of day <span class="req" aria-hidden="true">*</span></label><select id="f-time" name="time" required><option value="">Choose…</option><option value="morning">Morning</option><option value="afternoon">Afternoon</option><option value="evening">Evening</option><option value="flexible">Flexible</option></select><p class="error-msg" id="err-time"></p></div>
             </div>
-
-            <div class="text-center mt-16" data-aos="fade-up">
-                <a href="#booking"
-                    class="bg-charcoal text-ivory px-10 py-4 rounded-md text-lg font-semibold hover:bg-soft-gold hover:text-charcoal shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
-                    Book with Our Team
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== Testimonials Section ===== -->
-    <section class="py-20 bg-light-gray overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-soft-gold font-semibold tracking-widest uppercase">✦ Client Stories</span>
-                <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mt-4">
-                    What They Say
-                </h2>
-                </h2>
-            </div>
-
-            <!-- Swiper Slider -->
-            <div class="swiper testimonial-slider" data-aos="fade-up">
-                <div class="swiper-wrapper pb-16">
-
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide">
-                        <div class="flex flex-col md:flex-row items-start">
-                            <i data-lucide="quote" class="w-16 h-16 text-soft-gold/30 -ml-4" fill="#C0A067"></i>
-                            <div class="md:ml-4">
-                                <p class="font-display text-2xl lg:text-3xl text-charcoal italic mb-6">
-                                    "I left feeling like a completely new person. The aromatherapy session with Dana was absolutely transformative — my anxiety just melted away."
-                                </p>
-                                <div class="flex items-center">
-                                    <img src="https://raw.githubusercontent.com/farazc60/Project-Images/refs/heads/main/Elysian%20Real%20Estate%20Template/Sarah Jenkins.png" alt="Portrait of Adaeze O."
-                                        class="w-14 h-14 rounded-full object-cover">
-                                    <div class="ml-4">
-                                        <h4 class="text-xl font-semibold text-charcoal">Adaeze O.</h4>
-                                        <p class="text-charcoal/70">Lagos, Nigeria</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide">
-                        <div class="flex flex-col md:flex-row items-start">
-                            <i data-lucide="quote" class="w-16 h-16 text-soft-gold/30 -ml-4" fill="#C0A067"></i>
-                            <div class="md:ml-4">
-                                <p class="font-display text-2xl lg:text-3xl text-charcoal italic mb-6">
-                                    "The hot stone massage was the best decision I've ever made for my chronic back pain. Three sessions in and I feel 10 years younger!"
-                                </p>
-                                <div class="flex items-center">
-                                    <img src="https://raw.githubusercontent.com/farazc60/Project-Images/refs/heads/main/Elysian%20Real%20Estate%20Template/David Lee.png" alt="Portrait of Emeka B."
-                                        class="w-14 h-14 rounded-full object-cover">
-                                    <div class="ml-4">
-                                        <h4 class="text-xl font-semibold text-charcoal">Emeka B.</h4>
-                                        <p class="text-charcoal/70">Abuja, Nigeria</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide">
-                        <div class="flex flex-col md:flex-row items-start">
-                            <i data-lucide="quote" class="w-16 h-16 text-soft-gold/30 -ml-4" fill="#C0A067"></i>
-                            <div class="md:ml-4">
-                                <p class="font-display text-2xl lg:text-3xl text-charcoal italic mb-6">
-                                    "Navia's deep tissue work is unreal. My sports injury recovered faster than expected. Booking via WhatsApp was super easy too!"
-                                </p>
-                                <div class="flex items-center">
-                                    <img src="https://raw.githubusercontent.com/farazc60/Project-Images/refs/heads/main/Elysian%20Real%20Estate%20Template/Emily Rodriguez.png" alt="Portrait of Chisom L."
-                                        class="w-14 h-14 rounded-full object-cover">
-                                    <div class="ml-4">
-                                        <h4 class="text-xl font-semibold text-charcoal">Chisom L.</h4>
-                                        <p class="text-charcoal/70">Port Harcourt, Nigeria</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ===== Call to Action Section ===== -->
-    <section class="py-20 bg-ivory">
-        <div class="container mx-auto px-6">
-            <div class="bg-charcoal text-ivory rounded-lg shadow-2xl p-10 md:p-20 text-center" data-aos="fade-up">
-                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
-                    Reserve Your Session
-                </h2>
-                <p class="text-lg text-ivory/80 max-w-2xl mx-auto mb-10">
-                    Choose your preferred channel or fill the booking form — we'll confirm your appointment within 24 hours.
-                </p>
-                <a href="#booking"
-                    class="bg-soft-gold text-charcoal px-10 py-4 rounded-md text-lg font-semibold hover:bg-dark-gold shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
-                    ✦ Book a Session
-                </a>
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<!-- ===== Footer ===== -->
-<footer class="bg-charcoal text-ivory/70 pt-20 pb-10">
-    <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            <!-- Column 1: Brand & Newsletter -->
-            <div>
-                <h3 class="font-display text-3xl font-bold text-white mb-4">NSE<span>Y</span>IN</h3>
-                <p class="text-sm mb-6 max-w-xs">
-                    Premium massage therapy designed to restore balance, relieve pain, and renew your energy.
-                    </S>
-                <h4 class="text-lg font-semibold text-white mb-4">Join Our Newsletter</h4>
-                <form class="flex">
-                    <input type="email" placeholder="Your Email"
-                        class="w-full bg-ivory/10 text-white px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-soft-gold border-none">
-                    <button
-                        class="bg-soft-gold text-charcoal px-4 py-2 rounded-r-md font-semibold hover:bg-dark-gold transition-colors">
-                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                    </button>
-                </form>
-            </div>
-
-            <!-- Column 2: Quick Links -->
-            <div>
-                <h4 class="text-lg font-semibold text-white mb-6">Quick Links</h4>
-                <ul class="space-y-3">
-                    <li><a href="index.html" class="hover:text-soft-gold transition-colors">Home</a></li>
-                    <li><a href="#services"
-                            class="hover:text-soft-gold transition-colors">Services</a></li>
-                    <li><a href="#therapists" class="hover:text-soft-gold transition-colors">Our Therapists</a></li>
-                    <li><a href="#about" class="hover:text-soft-gold transition-colors">About Us</a></li>
-                    <li><a href="#testimonials" class="hover:text-soft-gold transition-colors">Reviews</a></li>
-                    <li><a href="#booking" class="hover:text-soft-gold transition-colors">Book Now</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 3: Contact Info -->
-            <div>
-                <h4 class="text-lg font-semibold text-white mb-6">Contact Us</h4>
-                <ul class="space-y-4">
-                    <li class="flex items-start">
-                        <i data-lucide="map-pin" class="w-5 h-5 mr-3 mt-1 text-soft-gold flex-shrink-0"></i>
-                        <span>Lagos, Nigeria</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i data-lucide="phone" class="w-5 h-5 mr-3 text-soft-gold"></i>
-                        <span>+234 900 000 0000</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i data-lucide="mail" class="w-5 h-5 mr-3 text-soft-gold"></i>
-                        <span>hello@nseyin.com</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Column 4: Social Media -->
-            <div>
-                <h4 class="text-lg font-semibold text-white mb-6">Follow Us</h4>
-                <div class="flex space-x-5">
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-ivory/10 flex items-center justify-center hover:bg-soft-gold hover:text-charcoal transition-all duration-300"
-                        aria-label="Facebook">
-                        <i data-lucide="facebook" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-ivory/10 flex items-center justify-center hover:bg-soft-gold hover:text-charcoal transition-all duration-300"
-                        aria-label="Instagram">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-ivory/10 flex items-center justify-center hover:bg-soft-gold hover:text-charcoal transition-all duration-300"
-                        aria-label="LinkedIn">
-                        <i data-lucide="linkedin" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-ivory/10 flex items-center justify-center hover:bg-soft-gold hover:text-charcoal transition-all duration-300"
-                        aria-label="Twitter">
-                        <i data-lucide="twitter" class="w-5 h-5"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Bar -->
-        <div class="border-t border-ivory/20 mt-16 pt-8 text-center text-sm">
-            <p>
-                © <span id="current-year"></span> NSEYIN Massage Therapy. All Rights Reserved. |
-                <a href="#" class="hover:text-soft-gold transition-colors">Privacy Policy</a> |
-                <a href="#" class="hover:text-soft-gold transition-colors">Terms of Service</a>
-            </p>
-        </div>
-    </div>
-</footer>
-
-<!-- Scroll to Top Button -->
-<a href="#top" id="scrollTopBtn" aria-label="Scroll to top">
-    <!-- SVG Progress Ring -->
-    <svg class="w-full h-full" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-        <!-- Background Circle -->
-        <circle class="stroke-charcoal/10" cx="18" cy="18" r="16" stroke-width="2" fill="none">
-        </circle>
-        <!-- Progress Circle -->
-        <circle id="progress-ring" class="stroke-soft-gold" cx="18" cy="18" r="16" stroke-width="2" fill="none"
-            stroke-linecap="round" stroke-dasharray="100.53" stroke-dashoffset="100.53"> <!-- 2 * pi * 16 -->
-        </circle>
-    </svg>
-    <!-- Icon (sits on top) -->
-    <span class="absolute text-charcoal">
-        <i data-lucide="chevron-up" class="w-6 h-6"></i>
-    </span>
-</a>
-
-<!-- Chatbot Toggle Button -->
-<button id="chat-toggle-btn" aria-label="Open chat">
-    <i data-lucide="message-circle" class="w-8 h-8"></i>
-</button>
-
-<!-- Chatbot Window -->
-<div id="chatbot-window">
-    <!-- Header -->
-    <div class="chatbot-header">
-        <div>
-            <h3 class="font-display text-xl font-bold">NSEYIN Concierge</h3>
-            <p class="text-xs text-ivory/70">How can we help you today?</p>
-        </div>
-        <button id="chatbot-close-btn" aria-label="Close chat">
-            <i data-lucide="x" class="w-6 h-6 text-ivory/70 hover:text-ivory"></i>
-        </button>
-    </div>
-
-    <!-- Messages -->
-    <div class="chatbot-messages" id="chatbot-messages">
-        <!-- Initial Bot Message -->
-        <div class="chat-message bot">
-            Welcome to NSEYIN Massage Therapy. Ask me about our services, therapists, or how to book a session.
-            <div class="text-xs text-charcoal/60 mt-3 pt-3 border-t border-charcoal/10">
-                Need to speak to a person?
-                <a href="tel:+2349000000000" class="font-semibold text-soft-gold hover:text-dark-gold">Call Us</a> or
-                <a href="mailto:hello@nseyin.com"
-                    class="font-semibold text-soft-gold hover:text-dark-gold">Email Us</a>.
-            </div>
-        </div>
-        <!-- Dummy user message -->
-        <!-- <div class="chat-message user">
-            Hi, I'm interested in properties in Beverly Hills.
-        </div> -->
-    </div>
-
-    <!-- Input Form -->
-    <div class="chatbot-input">
-        <form id="chatbot-form">
-            <input type="text" id="chatbot-input" placeholder="Type your message..." autocomplete="off" required>
-            <button type="submit" aria-label="Send message">
-                <i data-lucide="send" class="w-5 h-5"></i>
-            </button>
+            <p class="hint" style="margin-top:-.4rem">These are preferences only. We do not show live availability, so we will confirm an actual time with you.</p>
+            <div class="field"><label for="f-message">Anything we should know? <span class="hint">(optional)</span></label><textarea id="f-message" name="message" maxlength="600" aria-describedby="msg-hint"></textarea>
+              <p class="hint" id="msg-hint" style="margin:.35rem 0 0">Pressure or timing preferences are fine. <strong>Please do not include medical or health details here.</strong></p><p class="error-msg" id="err-message"></p></div>
+            <div class="hp" aria-hidden="true"><label for="f-website">Leave this field empty</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <div class="form-nav"><button type="button" class="btn btn-outline" data-prev>Back</button><button type="button" class="btn btn-ink" data-next>Review request</button></div>
+          </section>
+          <section class="step" aria-labelledby="s3">
+            <h3 id="s3" data-step-title>Review &amp; send</h3>
+            <dl class="review" id="review"></dl>
+            <div class="field"><div class="check-field"><input id="f-terms" name="terms" type="checkbox"><label for="f-terms">I have read and accept the <a href="policies.html#terms" target="_blank" rel="noopener">booking terms</a> and <a href="policies.html#privacy" target="_blank" rel="noopener">privacy notice</a>.</label></div><p class="error-msg" id="err-terms"></p></div>
+            <div class="field"><div class="check-field"><input id="f-bound" name="boundaries" type="checkbox"><label for="f-bound">I have read the <a href="#approach" data-open-approach>boundaries and consent approach</a>. I understand consent is discussed at the start of the session and can be changed or withdrawn at any time, and that this tick does not replace that conversation.</label></div><p class="error-msg" id="err-boundaries"></p></div>
+            <div class="form-nav"><button type="button" class="btn btn-outline" data-prev>Back</button><button type="submit" class="btn btn-ink"><span class="spinner" aria-hidden="true"></span><span>Send request</span></button></div>
+          </section>
         </form>
-    </div>
+        <noscript><p class="alert alert--warn">This booking form needs JavaScript. Without it, please use the contact details below.</p></noscript></div>
+        <aside class="note" aria-label="What happens next">
+          <h3 style="font-size:1.4rem">What happens next</h3>
+          <ol><li>We receive your request.</li><li>We contact you by your chosen method.</li><li>We agree a time. <strong>Your appointment is confirmed only then.</strong></li></ol>
+          <p>Your details are used only to handle your request. See the <a href="policies.html#privacy">privacy notice</a>.</p>
+          <p style="margin:0">Prefer to talk first? Go to <a href="#contact">Contact</a>.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="card" id="faq" aria-labelledby="h-faq">
+      <div class="card-header"><h2 id="h-faq">Questions</h2><span class="idx">04 · FAQ</span></div>
+      <div class="chips" role="group" aria-label="Filter questions by topic" data-filter-for="faq-list">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-filter="booking" aria-pressed="false">Booking</button>
+        <button class="chip" type="button" data-filter="session" aria-pressed="false">Your session</button>
+        <button class="chip" type="button" data-filter="consent" aria-pressed="false">Consent</button>
+        <button class="chip" type="button" data-filter="payments" aria-pressed="false">Payments</button>
+      </div>
+      <div class="faq" id="faq-list">
+      <details data-cat="booking"><summary>Do I need an account to book?</summary><div class="answer"><p>No. Send a short request in the booking card. There is nothing to register and no password.</p></div></details>
+<details data-cat="booking"><summary>Is my request a confirmed appointment?</summary><div class="answer"><p>No. A request is not an appointment. We contact you to agree a time, and it is confirmed only once we have replied to you.</p></div></details>
+<details data-cat="booking"><summary>How soon will you reply?</summary><div class="answer"><p>We reply by your chosen method (email, phone or WhatsApp). <span class="todo">[Typical reply time — to be confirmed]</span></p></div></details>
+<details data-cat="booking"><summary>Which service should I choose?</summary><div class="answer"><p>Use the goal chips on the services card, or choose “Not sure yet” and tell us your goals. Pressure can be changed during any session.</p></div></details>
+<details data-cat="session"><summary>What should I wear and bring?</summary><div class="answer"><p><span class="todo">[Clothing and preparation guidance — to be confirmed]</span></p></div></details>
+<details data-cat="session"><summary>Should I tell you about injuries or health conditions?</summary><div class="answer"><p>Please do not put medical details in the online forms. If something is relevant, we will discuss it with you privately before the session. If you have an acute injury, unexplained swelling or another concerning symptom, please see a doctor or physiotherapist first.</p></div></details>
+<details data-cat="session"><summary>What happens at the start of a session?</summary><div class="answer"><p>We talk about what you want, the areas we would work on and the pressure you prefer. You will know the intended treatment areas before we begin.</p></div></details>
+<details data-cat="session"><summary>Will deep tissue massage hurt?</summary><div class="answer"><p>Deep Tissue pressure can be firm and sometimes intense, but it should stay within what you can comfortably tolerate. Always tell us if it is too much.</p></div></details>
+<details data-cat="consent"><summary>What does consent mean here?</summary><div class="answer"><p>Consent is informed, voluntary and specific. Agreeing to one area or technique does not imply agreement to another, and any new area needs a separate conversation. You can withdraw consent at any point. See <a href='#approach'>How we work</a>.</p></div></details>
+<details data-cat="consent"><summary>Does ticking the boundaries box when booking mean I have agreed to everything?</summary><div class="answer"><p>No. It only shows you have read the policy. Consent is discussed at the start of the session and continues throughout.</p></div></details>
+<details data-cat="consent"><summary>What about privacy and draping?</summary><div class="answer"><p>Your privacy and comfort are respected throughout, including how you are draped. Tell us if you would like anything done differently.</p></div></details>
+<details data-cat="payments"><summary>How do I pay?</summary><div class="answer"><p><span class="todo">[Payment methods and when payment is due — to be confirmed]</span></p></div></details>
+<details data-cat="payments"><summary>What does a session cost?</summary><div class="answer"><p><span class="todo">[Prices — to be confirmed]</span></p></div></details>
+<details data-cat="payments"><summary>What is your cancellation policy?</summary><div class="answer"><p><span class="todo">[Cancellation and rescheduling policy — owner to approve — to be confirmed]</span> See the <a href='policies.html#cancellations'>cancellation terms</a>.</p></div></details>
+<details data-cat="payments"><summary>How is my personal information handled?</summary><div class="answer"><p>We use your details only to handle your request. See the <a href='policies.html#privacy'>privacy notice</a>.</p></div></details>
+      </div>
+    </section>
+
+    <section class="card card--dark" id="contact" aria-labelledby="h-contact">
+      <div class="card-header"><h2 id="h-contact">Get in touch</h2><span class="idx">05 · CONTACT</span></div>
+      <div class="contact-grid">
+        <div>
+          <ul class="info-list">
+            <li><b>Phone / WhatsApp</b><a href="tel:+2349056317709">+234 905 631 7709</a> · <a href="https://wa.me/2349056317709" target="_blank" rel="noopener">Message on WhatsApp</a></li>
+            <li><b>Email</b><a href="mailto:utibedc@gmail.com">utibedc@gmail.com</a></li>
+            <li><b>Location</b>Lagos, Nigeria <br><span class="todo">[Full studio address, directions or home-visit area — to be confirmed]</span></li>
+            <li><b>Opening hours</b><span class="todo">[Opening hours — to be confirmed]</span></li>
+          </ul>
+          <p class="hint">Looking to book? Use the <a href="#book">booking card</a> so we have everything we need.</p>
+        </div>
+        <div>
+          <div id="contact-status" class="alert" role="alert" tabindex="-1" hidden></div>
+          <form id="contact-form" class="form-card" novalidate>
+            <h3 style="font-size:1.5rem">Send a message</h3>
+            <div class="field"><label for="c-name">Name <span class="req" aria-hidden="true">*</span></label><input id="c-name" name="name" type="text" autocomplete="name" maxlength="100"><p class="error-msg" id="cerr-name"></p></div>
+            <div class="field"><label for="c-email">Email <span class="req" aria-hidden="true">*</span></label><input id="c-email" name="email" type="email" autocomplete="email" maxlength="160"><p class="error-msg" id="cerr-email"></p></div>
+            <div class="field"><label for="c-msg">Message <span class="req" aria-hidden="true">*</span></label><textarea id="c-msg" name="message" maxlength="1500"></textarea><p class="hint" style="margin:.35rem 0 0">Please do not include medical or health details.</p><p class="error-msg" id="cerr-msg"></p></div>
+            <div class="hp" aria-hidden="true"><label for="c-website">Leave this field empty</label><input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <button type="submit" class="btn btn-ink"><span class="spinner" aria-hidden="true"></span><span>Send message</span></button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot"><span>© <span id="year">2026</span> NSEYIN</span>
+      <span>Requests are not confirmed until we contact you.</span>
+      <span><a href="policies.html#privacy">Privacy</a> · <a href="policies.html#terms">Booking terms</a> · <a href="policies.html#cancellations">Cancellations</a></span></footer>
+  </main>
 </div>
 
-<!-- JavaScript -->
-<script src="js/script.js"></script>
+<a class="btn btn-gold fab" id="fab" href="#book">Book a Session</a>
+<button class="to-top" id="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
 
+<dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
+  <div class="sheet-head"><h2 id="sheet-title">Details</h2><button class="btn btn-outline btn-sm" type="button" data-close>Close</button></div>
+  <div class="sheet-body" id="sheet-body"></div>
+</dialog>
+<template id="tpl-deep-tissue" data-title="Deep Tissue Massage">
+  <figure class="sheet-fig"><img src="img/deep-800.webp" srcset="img/deep-480.webp 480w, img/deep-800.webp 800w, img/deep-1408.webp 1408w" sizes="(min-width:700px) 640px, 90vw" width="1408" height="768" alt="Illustration of a therapist leaning in to work on a client's back during a Deep Tissue session, the client resting face-down under a blue towel in a warm room with plants and patterned artwork" class="" loading="lazy" decoding="async"></figure>
+  <p>Deep Tissue Massage uses focused, sustained techniques to work with deeper layers of muscle and connective tissue. The aim is to help address muscular tension, support mobility and promote normal tissue function and circulation.</p><p>Pressure may be firm and can occasionally feel intense, but it is always adjusted to you. Please tell us if anything is uncomfortable. We will change what we are doing.</p>
+  <h3 style="font-size:1.25rem">May focus on</h3><ul><li>Back, neck and shoulders</li><li>The rotator cuff region</li><li>Hip flexors and hips</li></ul>
+  <dl><div><dt>Pressure</dt><dd>Firm; adjusted to you</dd></div><div><dt>Session length</dt><dd><span class="todo">[Durations — to be confirmed]</span></dd></div><div><dt>Price</dt><dd><span class="todo">[Pricing — to be confirmed]</span></dd></div></dl><p class="note"><strong>Good to know:</strong> Deep Tissue Massage supports comfort and mobility. It is not a treatment for medical conditions or a cure for injuries or chronic pain. If you have a concern, please see a doctor or physiotherapist.</p>
+  <div class="btn-row" style="margin-top:1rem"><a class="btn btn-ink" href="#book" data-book="deep-tissue">Book This Service</a></div>
+  <p class="hint" style="margin:1.2rem 0 .5rem"><strong>Compare with another service</strong></p><div class="chips"><button class="chip" type="button" data-open="swedish">Swedish</button><button class="chip" type="button" data-open="sports">Sports</button><button class="chip" type="button" data-open="shiatsu">Shiatsu</button></div>
+</template>
+<template id="tpl-swedish" data-title="Swedish Massage">
+  <figure class="sheet-fig"><img src="img/swedish-800.webp" srcset="img/swedish-480.webp 480w, img/swedish-800.webp 800w, img/swedish-1408.webp 1408w" sizes="(min-width:700px) 640px, 90vw" width="1408" height="768" alt="Illustration of a therapist using long, flowing strokes on a client's back during a Swedish massage, in a calm green room with candles and a window onto leaves" class="" loading="lazy" decoding="async"></figure>
+  <p>Swedish Massage uses long, flowing strokes and generally light-to-medium pressure over larger areas of the body. It is intended to encourage relaxation, ease everyday muscular tension and support a sense of well-being.</p><p>The approach is smooth, comfortable and tailored to your preferences.</p>
+  <h3 style="font-size:1.25rem">May focus on</h3><ul><li>Calves and hamstrings</li><li>The back</li><li>Larger areas of the body, at an unhurried pace</li></ul>
+  <dl><div><dt>Pressure</dt><dd>Light to medium</dd></div><div><dt>Session length</dt><dd><span class="todo">[Durations — to be confirmed]</span></dd></div><div><dt>Price</dt><dd><span class="todo">[Pricing — to be confirmed]</span></dd></div></dl>
+  <div class="btn-row" style="margin-top:1rem"><a class="btn btn-ink" href="#book" data-book="swedish">Book This Service</a></div>
+  <p class="hint" style="margin:1.2rem 0 .5rem"><strong>Compare with another service</strong></p><div class="chips"><button class="chip" type="button" data-open="deep-tissue">Deep Tissue</button><button class="chip" type="button" data-open="sports">Sports</button><button class="chip" type="button" data-open="shiatsu">Shiatsu</button></div>
+</template>
+<template id="tpl-sports" data-title="Sports Massage">
+  <figure class="sheet-fig"><img src="img/sports-800.webp" srcset="img/sports-480.webp 480w, img/sports-800.webp 800w, img/sports-1408.webp 1408w" sizes="(min-width:700px) 640px, 90vw" width="1408" height="768" alt="Illustration of a therapist working on a client's leg during a Sports massage, the client lying face-down on a massage table in a bright room with an anatomy poster" class="" loading="lazy" decoding="async"></figure>
+  <p>Sports Massage is not only for athletes. It suits anyone who wants to maintain mobility, manage muscular tension and support recovery as part of an active life, whether that is training, physical work or a demanding daily routine.</p><p>A session may focus on particular muscle groups affected by repetitive activity or exercise. Techniques and pressure are adapted to your condition, goals and suitability for treatment.</p>
+  <h3 style="font-size:1.25rem">May focus on</h3><ul><li>Muscle groups used in your activity</li><li>Areas affected by repetitive movement or physical work</li><li>Maintenance between training or busy periods</li></ul>
+  <dl><div><dt>Pressure</dt><dd>Adapted to you</dd></div><div><dt>Session length</dt><dd><span class="todo">[Durations — to be confirmed]</span></dd></div><div><dt>Price</dt><dd><span class="todo">[Pricing — to be confirmed]</span></dd></div></dl><p class="note"><strong>Good to know:</strong> If you have an acute injury, unexplained swelling or another concerning symptom, please get a medical assessment first. Massage is not always suitable, and we may suggest you do this before booking.</p>
+  <div class="btn-row" style="margin-top:1rem"><a class="btn btn-ink" href="#book" data-book="sports">Book This Service</a></div>
+  <p class="hint" style="margin:1.2rem 0 .5rem"><strong>Compare with another service</strong></p><div class="chips"><button class="chip" type="button" data-open="deep-tissue">Deep Tissue</button><button class="chip" type="button" data-open="swedish">Swedish</button><button class="chip" type="button" data-open="shiatsu">Shiatsu</button></div>
+</template>
+<template id="tpl-shiatsu" data-title="Shiatsu Massage">
+  <figure class="sheet-fig"><img src="img/shiatsu-800.webp" srcset="img/shiatsu-480.webp 480w, img/shiatsu-800.webp 800w, img/shiatsu-1408.webp 1408w" sizes="(min-width:700px) 640px, 90vw" width="1408" height="768" alt="Illustration of a therapist kneeling to apply Shiatsu pressure to a clothed client's back, the client lying on a floor mat in a room with plants and African artwork" class="" loading="lazy" decoding="async"></figure>
+  <p>Shiatsu originated in Japan and traditionally uses rhythmic pressure applied with the fingers, palms and other appropriate parts of the hands or body.</p><p>It is associated with traditional Japanese bodywork ideas, including <em>chi</em>, or life energy. These are traditional concepts, not established scientific facts. The experience is intended to encourage relaxation and a sense of balance.</p>
+  <h3 style="font-size:1.25rem">May focus on</h3><ul><li>Rhythmic pressure with fingers and palms</li><li>Techniques offered: <span class="todo">[Shiatsu techniques — to be confirmed]</span></li></ul>
+  <dl><div><dt>Pressure</dt><dd><span class="todo">[Pressure style — to be confirmed]</span></dd></div><div><dt>Session length</dt><dd><span class="todo">[Durations — to be confirmed]</span></dd></div><div><dt>Price</dt><dd><span class="todo">[Pricing — to be confirmed]</span></dd></div><div><dt>Set-up</dt><dd><span class="todo">[Mat or table, and clothing — to be confirmed]</span></dd></div></dl>
+  <div class="btn-row" style="margin-top:1rem"><a class="btn btn-ink" href="#book" data-book="shiatsu">Book This Service</a></div>
+  <p class="hint" style="margin:1.2rem 0 .5rem"><strong>Compare with another service</strong></p><div class="chips"><button class="chip" type="button" data-open="deep-tissue">Deep Tissue</button><button class="chip" type="button" data-open="swedish">Swedish</button><button class="chip" type="button" data-open="sports">Sports</button></div>
+</template>
+
+<script src="js/config.js"></script>
+<script src="js/app.js" defer></script>
+<script src="js/booking.js" defer></script>
+<script src="js/contact.js" defer></script>
 </body>
-
 </html>
