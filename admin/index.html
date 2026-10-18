@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>NSEYIN Staff Admin</title>
+<link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="../css/app.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="no-book-bar admin">
+<header class="adm-top">
+  <strong class="adm-brand">NSEYIN <span>staff</span></strong>
+  <div id="who" class="adm-who" hidden><span id="who-text"></span><button type="button" class="btn btn-outline btn-sm" id="signout">Sign out</button></div>
+</header>
+
+<main id="main" class="adm-main">
+  <noscript><p class="alert alert--error">The admin area needs JavaScript.</p></noscript>
+  <div id="config-warn" class="alert alert--warn" hidden>Set <code>supabaseUrl</code> and <code>supabaseAnonKey</code> in <code>js/config.js</code>.</div>
+
+  <section id="login" class="form-card adm-login" hidden>
+    <h1 style="font-size:2rem">Staff sign in</h1>
+    <div id="login-msg" class="alert alert--error" role="alert" hidden></div>
+    <form id="login-form" novalidate>
+      <div class="field"><label for="l-email">Email</label><input id="l-email" type="email" autocomplete="username" required></div>
+      <div class="field"><label for="l-pass">Password</label><input id="l-pass" type="password" autocomplete="current-password" required></div>
+      <button class="btn btn-primary btn-block" type="submit"><span class="spinner" aria-hidden="true"></span><span>Sign in</span></button>
+    </form>
+  </section>
+
+  <section id="app" hidden>
+    <div class="adm-tabs" role="tablist" aria-label="Sections">
+      <button role="tab" id="tab-requests" aria-selected="true" data-tab="requests">New requests <span class="badge" id="count-new">0</span></button>
+      <button role="tab" id="tab-bookings" aria-selected="false" data-tab="bookings">All bookings</button>
+      <button role="tab" id="tab-customers" aria-selected="false" data-tab="customers">Customers</button>
+      <button role="tab" id="tab-messages" aria-selected="false" data-tab="messages">Messages <span class="badge" id="count-msg">0</span></button>
+    </div>
+    <div class="adm-tools">
+      <label class="sr-only" for="q">Search</label>
+      <input id="q" type="search" placeholder="Search name, email, phone or reference" autocomplete="off">
+      <label class="sr-only" for="status-filter">Status</label>
+      <select id="status-filter"><option value="">All statuses</option><option value="new">New</option><option value="contacted">Contacted</option><option value="confirmed">Confirmed</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option><option value="declined">Declined</option><option value="no_show">No-show</option></select>
+      <button class="btn btn-outline btn-sm" id="refresh" type="button">Refresh</button>
+      <button class="btn btn-outline btn-sm" id="export" type="button" hidden>Export CSV (owner)</button>
+    </div>
+    <p id="list-status" class="hint" role="status" aria-live="polite"></p>
+    <div id="list" class="table-wrap"></div>
+  </section>
+</main>
+
+<dialog id="detail" aria-labelledby="detail-title">
+  <div class="dlg-head"><h2 id="detail-title">Details</h2><button type="button" class="btn btn-outline btn-sm" id="close-detail">Close</button></div>
+  <div id="detail-msg" class="alert" role="alert" hidden></div>
+  <div id="detail-body"></div>
+</dialog>
+
+<script src="vendor/supabase-js-2.45.4.umd.js"></script>
+<script src="../js/config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
