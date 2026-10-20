@@ -1,12 +1,6 @@
-/* NSEYIN — public configuration. Nothing secret belongs in this file.
-   After deploying the Supabase Edge Function (see docs/SETUP.md), paste its URL here. */
 window.NSEYIN_CONFIG = {
-  // e.g. "https://abcdxyz.supabase.co" — used by the staff admin page only
-  supabaseUrl: "",
-  // e.g. "https://abcdxyz.supabase.co/functions/v1/submit-booking"
-  bookingEndpoint: "",
-  // e.g. "https://abcdxyz.supabase.co/functions/v1/submit-contact"
-  contactEndpoint: "",
-  // Public anon key is safe to expose ONLY with row-level security enabled (it is, see supabase/migrations).
-  supabaseAnonKey: ""
+  supabaseUrl: "https://nnwpsbtjagnmuzanpdnr.supabase.co",
+  bookingEndpoint: "https://nnwpsbtjagnmuzanpdnr.supabase.co/functions/v1/submit-booking",
+  contactEndpoint: "https://nnwpsbtjagnmuzanpdnr.supabase.co/functions/v1/submit-contact",
+  supabaseAnonKey: "sb_publishable_w2kgfs-8qbvaX1HKk1xC6Q_LnYrigQe"
 };
