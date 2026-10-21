@@ -269,3 +269,8 @@ table.prices th,table.prices td{padding:.7rem 1rem;text-align:left;border-bottom
 table.prices thead th{font-size:.82rem;color:var(--ink-soft)}table.prices tbody tr:last-child>*{border-bottom:0}
 table.prices td{font-weight:700}
 .card .table-wrap{border:0;background:var(--card-2);border-radius:18px;overflow:hidden}
+
+/* v6: analytics consent banner and footer link */
+.consent{position:fixed;left:.75rem;right:.75rem;bottom:.75rem;z-index:250;max-width:620px;margin:0 auto;background:var(--card);color:var(--ink);border-radius:20px;padding:1rem 1.2rem;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.consent p{margin:0 0 .7rem;font-size:.95rem}
+.foot button{background:none;border:0;color:inherit;font:inherit;text-decoration:underline;cursor:pointer;padding:0;min-height:44px}

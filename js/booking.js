@@ -169,7 +169,7 @@
           var c = document.createElement('div');
           c.appendChild(text('Thank you — your request has been received.'));
           c.appendChild(text('Reference: ' + (r.body.reference || '—') + '. This is a request, not a confirmed appointment. We will contact you by your chosen method to confirm or suggest another time.'));
-          form.hidden = true; document.getElementById('progress').hidden = true; status('ok', c);
+          form.hidden = true; document.getElementById('progress').hidden = true; status('ok', c); document.dispatchEvent(new CustomEvent('nseyin:booking-sent', { detail: { service: payload.service } }));
         } else if (r.status === 429) {
           status('error', text('Too many requests from this connection. Please wait a few minutes and try again, or contact us directly.'));
         } else if (r.status === 400 && r.body && r.body.errors) {

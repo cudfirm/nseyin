@@ -96,6 +96,12 @@ The site is already set to `https://nseyin.netlify.app` (canonical URLs, Open Gr
 
 Once the address and hours are confirmed, add a `LocalBusiness` (or `HealthAndBeautyBusiness`) JSON-LD block to `index.html` with exactly those details. It was deliberately left out because the details are unconfirmed.
 
+## Google Analytics (implemented, opt-in)
+`js/analytics.js` does nothing unless `NSEYIN_CONFIG.gaMeasurementId` matches `^G-[A-Z0-9]{4,}$`. Consent Mode defaults are denied; gtag.js loads only after Accept (choice kept in localStorage, key `nseyin-analytics`); `allow_google_signals` and ad personalisation are off. Events `booking_request_sent` (service only) and `contact_message_sent` come from the `nseyin:booking-sent` / `nseyin:contact-sent` DOM events. The footer `#cookie-choices` button reopens the banner. The public CSP allows googletagmanager and google-analytics hosts; the admin CSP is unchanged. Tested with Playwright and a mocked ID (`ga_qa.py`); not tested with a real GA property.
+
+## Double-booking and calendar (admin, client-side)
+Only `confirmed` bookings block a time. Duration 30 or 60 minutes (custom assumed 60); buffer 15 minutes (workspace) or 30 (home/suite). The admin warns on save and lists same-day bookings. There is no database constraint, so two staff sessions could still race; an exclusion constraint is the hard option. Calendar buttons build a Google Calendar template URL and an `.ics` in the browser (no API or OAuth). Calendar API sync is not built.
+
 ## Analytics recommendation
 **Umami Cloud, free Hobby plan.** At the time of writing its pricing page lists 100,000 events a month, 1 website, 6 months of data and no cookies, so no consent banner is needed. That is plenty for a local massage business, and it needs no personal data. It can also count a custom event when a booking request is sent, which tells you what actually matters (requests, not just visits). Runner-up: Cloudflare Web Analytics (free, cookieless, page views only). Avoid Google Analytics 4 for now: it needs a consent banner and is heavier than this site needs. Check current pricing before signing up.
 

@@ -1,4 +1,13 @@
-body.admin{padding-bottom:0;background:#f3f1ea}
+body.admin{padding-bottom:0;background:#f3f1ea;color:#1f2421}
+/* The public page is light-on-dark; the admin is dark-on-light, so everything below sets its own readable colours. */
+.adm-main,.adm-main table,.adm-main td,dialog#detail{color:#1f2421}
+.adm-main .btn-outline,dialog#detail .btn-outline{color:var(--forest);background:#fff;border-color:var(--forest)}
+.adm-main .btn-outline:hover,dialog#detail .btn-outline:hover{background:var(--forest);color:#fff}
+.adm-main th{color:#1f2421}
+.adm-main a{color:#0B3D2E;text-decoration:underline}
+.adm-main .btn-primary,dialog#detail .btn-primary{background:var(--forest);color:#fff}
+dialog#detail{background:#fff}
+.adm-main label,dialog#detail label{color:#1f2421}
 .adm-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.8rem 1rem;background:var(--forest);color:var(--ivory)}
 .adm-brand{font:600 1.5rem var(--font-display);letter-spacing:.14em}.adm-brand span{font:600 .75rem var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--champagne);margin-left:.4rem}
 .adm-who{display:flex;gap:.8rem;align-items:center;font-size:.9rem}

@@ -30,7 +30,7 @@
       body: JSON.stringify({ idempotencyKey: key, name: v('name'), email: v('email'), message: v('message'), website: form.elements.website.value, elapsedMs: Date.now() - loadedAt }) })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, status: r.status, body: j }; }); })
       .then(function (r) {
-        if (r.ok && r.body && r.body.ok) { form.reset(); say('ok', 'Thank you — your message has been received. We will reply by email.'); }
+        if (r.ok && r.body && r.body.ok) { form.reset(); document.dispatchEvent(new CustomEvent('nseyin:contact-sent')); say('ok', 'Thank you — your message has been received. We will reply by email.'); }
         else if (r.status === 429) say('error', 'Too many requests. Please wait a few minutes and try again.');
         else say('error', 'Sorry, we could not send your message. Nothing was saved. Please try again or use the contact details on this page.');
       })

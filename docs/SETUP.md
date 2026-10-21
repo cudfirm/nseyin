@@ -9,6 +9,20 @@
 - When you see a grey box, that is something to **copy and paste**.
 - Stuck? Stop and ask for help. Nothing here can break your website forever.
 
+**⚡ Already started? Read this box first. Do NOT start over.**
+
+Parts 1 and 2 are for people doing this for the first time. If you have already done the things below, **skip them**. Do not sign up again, do not make a new project, and do not run `001_init.sql` again.
+
+| Already done (skip) | What is still left (do this) |
+|---|---|
+| ✅ Supabase account and the `nseyin` project | ➡️ Part 2, **step B2**: run `002_session_details.sql` (once) |
+| ✅ Running `001_init.sql` | ➡️ Part 2, **step B3**: turn on `pg_cron` and run `003_daily_cleanup.sql` (once) |
+| ✅ Turning sign-ups off | ➡️ Part 3: Resend email key |
+| ✅ Your login user and the owner step | ➡️ Part 4: the two helpers, the six secrets (`config.js` already holds your Supabase address and key) |
+| ✅ Copying the URL and key | ➡️ Part 5: try it out |
+
+**Is it a problem to run 001 twice?** Yes. It would stop with an error such as "already exists", because the shelves are already built. It would not erase your data, but there is no reason to run it again. If you see that error, you ran the wrong file. Check you are pasting `002` or `003`.
+
 **The 6 parts**
 
 | Part | What you do | About how long |
@@ -328,7 +342,32 @@ Go to **https://nseyin.netlify.app/admin/** and log in.
 4. When you both agree on a time, type the date and time, then choose **Confirmed**. Click **Save booking**.
 5. After the massage, choose **Completed**.
 
+**Two clients want the same time?** The website does not hold a time for anyone until you confirm it. Only **Confirmed** bookings block a time.
+
+- When you open a booking, a box called **Same day** lists everyone else on that date. Look at it before you agree a time.
+- If you press **Save booking** with **Confirmed** and the time is too close to another confirmed booking, the page asks: *"This time clashes… Confirm anyway?"* Press **Cancel** and pick another time. The page leaves 15 minutes between sessions at your workspace and 30 minutes for home visits and private suites, for rest and travel.
+- Simple rule: **the first person you confirm gets the time.** Message the other person on WhatsApp and offer a different time.
+- A custom length is counted as 1 hour for this check.
+
+**Put it in your calendar.** Once a booking is **Confirmed** with a time, two buttons appear: **Add to Google Calendar** (opens Google Calendar with everything filled in; you just press Save) and **Download .ics** (works with Apple, Outlook and others). These do not connect to your Google account, so nothing is shared.
+
 Every change is saved with the date. **Do not type health details in the notes box.** Only write things like: called, no answer. The staff page logs you out by itself after 30 minutes. This is to keep client information safe.
+
+---
+
+## Optional: count visitors with Google Analytics
+
+You can skip this. The website works the same without it.
+
+1. Go to **analytics.google.com** and sign in with your Google account.
+2. Press **Start measuring** (or **Admin**, then **Create**, then **Property**). Name it **NSEYIN**. Choose time zone **Nigeria** and currency **Naira**. Press **Next** until it is created.
+3. When it asks what to set up, choose **Web**. Type **https://nseyin.netlify.app** and the name **NSEYIN**. Leave the other boxes as they are. Press **Create stream**.
+4. You will see a **Measurement ID** that starts with **G-** (for example G-ABC123XYZ). Copy it.
+5. On your computer, open the file **js/config.js** in Notepad. Find the line `gaMeasurementId: "",`. Put your ID between the quotes: `gaMeasurementId: "G-ABC123XYZ",`. Save the file.
+6. Upload the changed file to GitHub like you did in Part 1. Wait for Netlify to update.
+7. Open your website. A small box asks about counting visits. Press **Accept**. Then open Analytics and look at **Reports, Realtime**. You should see yourself within a minute.
+
+How it behaves: nothing is counted unless a visitor presses **Accept**. **Decline** means nothing is counted. A visitor can change their mind with **Cookie choices** at the bottom of the page. Booking details are never sent to Google. The page counts only that a booking request or message was sent.
 
 ---
 
@@ -336,7 +375,8 @@ Every change is saved with the date. **Do not type health details in the notes b
 
 - **Customer emails:** buy a website name, then tell me.
 - **Paystack payments:** tell me your prices first. The easiest start is to send clients a Paystack payment link after you confirm their time.
-- **Counting visitors:** the best free choice is **Umami**. Tell me when you have signed up. I will add it.
+- **Counting visitors:** this is optional. You do not need it to run the business. If you want it, follow **Optional: count visitors with Google Analytics** below.
+- **Google Calendar that fills itself in:** later we can connect your Google account so confirmed bookings appear in your calendar by themselves. This needs a free Google Cloud project and extra setup. Tell me if you want it.
 - **Legal words:** the page called **Policies** was written as a first draft. Please ask a lawyer to read it before you promote the website.
 - **Costs:** Supabase and Resend are free to start. When the business grows, Supabase may cost about $25 a month. Check their pricing pages.
 

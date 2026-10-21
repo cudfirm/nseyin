@@ -42,6 +42,44 @@
     var first = String(name || '').split(' ')[0] || 'there';
     return 'https://wa.me/' + d + '?text=' + encodeURIComponent('Hello ' + first + ', this is NSEYIN about your booking request ' + ref + '.');
   }
+  // ---- Double-booking guard and calendar links (staff only; nothing is sent anywhere) ----
+  // A custom length has no fixed number of minutes, so 60 is assumed. Travel buffer: 15 min at the workspace, 30 min for home or suite visits.
+  function mins(b) { return b.duration === '30' ? 30 : 60; }
+  function buffer(b) { return (b.session_location === 'home' || b.session_location === 'suite') ? 30 : 15; }
+  function clashes(b, whenIso) {
+    var start = new Date(whenIso).getTime(), end = start + mins(b) * 60000;
+    return state.bookings.filter(function (x) { return x.id !== b.id && x.status === 'confirmed' && x.scheduled_at; }).filter(function (x) {
+      var xs = new Date(x.scheduled_at).getTime(), xe = xs + mins(x) * 60000, gap = Math.max(buffer(b), buffer(x)) * 60000;
+      return start < xe + gap && xs < end + gap;
+    });
+  }
+  function localDay(iso) { var d = new Date(iso), p = function (n) { return (n < 10 ? '0' : '') + n; }; return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()); }
+  function dayOf(b) { return b.scheduled_at ? localDay(b.scheduled_at) : b.preferred_date; }
+  function sameDayBox(b) {
+    var others = state.bookings.filter(function (x) { return x.id !== b.id && ['new', 'contacted', 'confirmed'].indexOf(x.status) > -1 && dayOf(x) === dayOf(b); });
+    if (!others.length) return null;
+    var ul = h('ul', { class: 'timeline', style: 'max-height:none' });
+    others.forEach(function (x) {
+      var when = x.scheduled_at ? new Date(x.scheduled_at).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : (TIME[x.preferred_time] || '') + ' (requested)';
+      ul.appendChild(h('li', {}, h('strong', { text: when + ' · ' + x.reference + ' · ' + ((x.customers && x.customers.full_name) || '—') }), h('span', { class: 'hint', text: ' ' + (STATUS_LABEL[x.status] || x.status) + ' · ' + sess(x) })));
+    });
+    return h('div', { class: 'alert alert--warn', style: 'margin:.6rem 0' }, h('strong', { text: 'Other bookings on this day (' + others.length + ')' }), ul,
+      h('p', { class: 'hint', text: 'Only confirmed bookings block a time. Two clients can request the same slot; confirm the first, then offer the other another time.' }));
+  }
+  function utc(d) { return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''); }
+  function calendarBox(b) {
+    if (!b.scheduled_at) return null;
+    var start = new Date(b.scheduled_at), end = new Date(start.getTime() + mins(b) * 60000);
+    var title = 'NSEYIN: ' + sess(b) + ' — ' + ((b.customers && b.customers.full_name) || '').split(' ')[0] + ' (' + b.reference + ')';
+    var where = b.session_location === 'workspace' ? 'NSEYIN workspace, Boundary, Ajegunle, Lagos' : 'Address to be confirmed with the client';
+    var note = 'Booking ' + b.reference + (b.duration === 'custom' ? ' (custom length: end time assumed 1 hour)' : '');
+    var g = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(title) + '&dates=' + utc(start) + '/' + utc(end) + '&details=' + encodeURIComponent(note) + '&location=' + encodeURIComponent(where);
+    var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//NSEYIN//Admin//EN', 'BEGIN:VEVENT', 'UID:' + b.reference + '@nseyin', 'DTSTAMP:' + utc(new Date()), 'DTSTART:' + utc(start), 'DTEND:' + utc(end),
+      'SUMMARY:' + title.replace(/[\r\n,;]/g, ' '), 'LOCATION:' + where.replace(/[\r\n,;]/g, ' '), 'DESCRIPTION:' + note, 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    return h('p', { style: 'display:flex;gap:.5rem;flex-wrap:wrap' },
+      h('a', { class: 'btn btn-outline btn-sm', id: 'gcal-link', href: g, target: '_blank', rel: 'noopener noreferrer', text: 'Add to Google Calendar' }),
+      h('a', { class: 'btn btn-outline btn-sm', id: 'ics-link', href: URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })), download: b.reference + '.ics', text: 'Download .ics' }));
+  }
   function fmt(d) { return d ? new Date(d).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) : '—'; }
   function fmtDate(d) { return d ? new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }) : '—'; }
   function badge(status) { return h('span', { class: 'st st-' + status, text: STATUS_LABEL[status] || status }); }
@@ -154,6 +192,10 @@
     var save = h('button', { class: 'btn btn-primary btn-sm', type: 'button', text: 'Save booking', onclick: async function () {
       var s = st.value, when = sched.value ? new Date(sched.value).toISOString() : null;
       if (s === 'confirmed' && !when) { msg($('detail-msg'), 'error', 'Set the agreed date and time before marking a booking as confirmed.'); return; }
+      if (s === 'confirmed') {
+        var cl = clashes(b, when);
+        if (cl.length && !confirm('This time clashes (or is too close, allowing travel and rest time) with: ' + cl.map(function (x) { return x.reference + ' at ' + new Date(x.scheduled_at).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }); }).join(', ') + '.\n\nConfirm anyway?')) return;
+      }
       save.disabled = true; var r = await sb.from('bookings').update({ status: s, scheduled_at: when }).eq('id', id); save.disabled = false;
       if (r.error) { msg($('detail-msg'), 'error', 'Could not save: ' + errText(r.error)); return; }
       msg($('detail-msg'), 'ok', 'Booking saved.'); await loadAll(); openBooking(id);
@@ -164,6 +206,7 @@
       h('p', { text: 'Note from customer: ' + (b.message || '—') }),
       (b.customers && waUrl(b.customers.phone, b.customers.full_name, b.reference)) ? h('p', {}, h('a', { class: 'btn btn-outline btn-sm', id: 'wa-link', href: waUrl(b.customers.phone, b.customers.full_name, b.reference), target: '_blank', rel: 'noopener noreferrer', text: 'Message on WhatsApp' })) : null,
       h('p', { class: 'hint', text: 'Terms accepted ' + fmt(b.terms_accepted_at) + ' · boundaries acknowledged ' + fmt(b.boundaries_acknowledged_at) + ' (' + b.terms_version + ')' }),
+      sameDayBox(b), calendarBox(b),
       field('Status', st, 'b-status'), field('Agreed date & time (your local time)', sched, 'b-sched'), save));
     // Customer box
     grid.appendChild(customerBox(b.customers, function () { return openBooking(id); }));
