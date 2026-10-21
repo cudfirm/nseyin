@@ -9,6 +9,19 @@
   var SERVICE = { 'deep-tissue': 'Deep Tissue', swedish: 'Swedish', sports: 'Sports', shiatsu: 'Shiatsu', unsure: 'Not sure' };
   var LEN = { '30': '30 min', '60': '1 hour', custom: 'Custom length' };
   var WHERE = { workspace: 'Workspace', home: 'Home service', suite: 'Private suite' };
+  var PRICES = { 'deep-tissue': { '30': 8000, '60': 12000 }, swedish: { '30': 5000, '60': 8000 }, sports: { '30': 10000, '60': 14000 }, shiatsu: { '30': 5000, '60': 8000 } };
+  function naira(n) { return '₦' + n.toLocaleString('en-US'); }
+  // Price comes from the same price list as the website. A custom length or an undecided service has no fixed price.
+  function price(b) {
+    if (b.duration === 'custom') return 'Custom length: price to agree';
+    var p = PRICES[b.service] && PRICES[b.service][b.duration];
+    if (!p) return b.service === 'unsure' ? 'Service not chosen: price to agree' : 'To agree';
+    return naira(p);
+  }
+  function deposit(b) {
+    var p = PRICES[b.service] && PRICES[b.service][b.duration];
+    return p && (b.session_location === 'home' || b.session_location === 'suite') ? ' (30% deposit ' + naira(Math.round(p * 0.3)) + ')' : '';
+  }
   function sess(b) { return SERVICE[b.service] + (b.duration ? ' · ' + LEN[b.duration] : '') + (b.session_location ? ' · ' + WHERE[b.session_location] : ''); }
   var TIME = { morning: 'Morning', afternoon: 'Afternoon', evening: 'Evening', flexible: 'Flexible' };
   var METHOD = { email: 'Email', phone: 'Phone call', whatsapp: 'WhatsApp' };
@@ -142,9 +155,9 @@
         var c = b.customers || {}; return matches(q, [b.reference, c.full_name, c.email, c.phone]);
       });
       $('list-status').textContent = rows.length + ' shown';
-      list.appendChild(table(['Reference', 'Received', 'Customer', 'Service', 'Preferred', 'Status', 'Scheduled'], rows.map(function (b) {
+      list.appendChild(table(['Reference', 'Received', 'Customer', 'Service', 'Price', 'Preferred', 'Status', 'Scheduled'], rows.map(function (b) {
         var c = b.customers || {};
-        return { open: function () { openBooking(b.id); }, label: 'Open booking ' + b.reference, cells: [b.reference, fmt(b.created_at), c.full_name || '—', sess(b), fmtDate(b.preferred_date) + ', ' + TIME[b.preferred_time], badge(b.status), fmt(b.scheduled_at)] };
+        return { open: function () { openBooking(b.id); }, label: 'Open booking ' + b.reference, cells: [b.reference, fmt(b.created_at), c.full_name || '—', sess(b), price(b), fmtDate(b.preferred_date) + ', ' + TIME[b.preferred_time], badge(b.status), fmt(b.scheduled_at)] };
       }), 'No bookings match.'));
     } else if (state.tab === 'customers') {
       var cs = state.customers.filter(function (c) { return matches(q, [c.full_name, c.email, c.phone]); });
@@ -202,6 +215,7 @@
     } });
     grid.appendChild(h('div', { class: 'dbox' }, h('h3', { text: 'Booking' }),
       h('p', {}, badge(b.status), ' ', h('span', { class: 'hint', text: 'Received ' + fmt(b.created_at) })),
+      h('p', { text: 'Price: ' + price(b) + deposit(b), style: 'font-weight:700' }),
       h('p', { text: sess(b) + ' · prefers ' + fmtDate(b.preferred_date) + ', ' + TIME[b.preferred_time] }),
       h('p', { text: 'Note from customer: ' + (b.message || '—') }),
       (b.customers && waUrl(b.customers.phone, b.customers.full_name, b.reference)) ? h('p', {}, h('a', { class: 'btn btn-outline btn-sm', id: 'wa-link', href: waUrl(b.customers.phone, b.customers.full_name, b.reference), target: '_blank', rel: 'noopener noreferrer', text: 'Message on WhatsApp' })) : null,
@@ -296,8 +310,8 @@
     if (!confirm('Export all booking and customer records to a CSV file? It contains personal data; store it securely and delete it when no longer needed.')) return;
     var r = await sb.rpc('export_bookings');
     if (r.error) { $('list-status').textContent = 'Export refused: ' + errText(r.error); return; }
-    var cols = ['reference', 'status', 'service', 'duration', 'session_location', 'preferred_date', 'preferred_time', 'scheduled_at', 'created_at', 'full_name', 'email', 'phone'];
-    var csv = [cols.join(',')].concat(r.data.map(function (row) { return cols.map(function (c) { return csvCell(row[c]); }).join(','); })).join('\r\n');
+    var cols = ['reference', 'status', 'service', 'duration', 'price', 'session_location', 'preferred_date', 'preferred_time', 'scheduled_at', 'created_at', 'full_name', 'email', 'phone'];
+    var csv = [cols.join(',')].concat(r.data.map(function (row) { return cols.map(function (c) { return csvCell(c === 'price' ? price(row) : row[c]); }).join(','); })).join('\r\n');
     var a = h('a', { href: URL.createObjectURL(new Blob([csv], { type: 'text/csv' })), download: 'nseyin-bookings-' + new Date().toISOString().slice(0, 10) + '.csv' });
     document.body.appendChild(a); a.click(); a.remove();
   });
